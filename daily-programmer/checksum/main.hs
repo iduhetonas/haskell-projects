@@ -10,9 +10,11 @@ Portability :  portable
 
 
 -}
-import Data.ByteString as B
+import qualified Data.ByteString as BS
+import qualified Data.ByteString.Char8 as CBS
 import Data.Bits
 import Data.Word
+import Data.Char
 
 
 -- 
@@ -33,7 +35,12 @@ bytePack (byte1, byte2) = (toWord16 byte1 .|. (shift (toWord16 byte2) 8)) :: Wor
 toWord16 :: Word8 -> Word16
 toWord16 byte = fromIntegral byte 
 
+
 main :: IO ()
-main = print $ checksumWord [1, 2]
+main = do
+  str <- readFile "./input.txt"
+  print $ lines str
+  --n <- digitToInt . readFile $ "./input.txt"
+  --print $ checksumWord . BS.unpack $ CBS.pack "HelloHelloHello" 
   
   
