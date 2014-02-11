@@ -10,14 +10,13 @@ Portability :  portable
 
 
 -}
-import qualified Data.ByteString as BS
-import qualified Data.ByteString.Char8 as CBS
-import Data.Bits
-import Data.Word
+import qualified Data.ByteString as BS (unpack)
+import qualified Data.ByteString.Char8 as CBS (pack)
+import Data.Bits (shift, (.|.))
+import Data.Word (Word8, Word16)
 import Data.Char
 
 
--- 
 checksumWord :: [Word8] -> Word16
 checksumWord bytes = 
   let result = Prelude.foldl addValues (0,0) bytes
@@ -38,9 +37,6 @@ toWord16 byte = fromIntegral byte
 
 main :: IO ()
 main = do
-  str <- readFile "./input.txt"
-  print $ lines str
-  --n <- digitToInt . readFile $ "./input.txt"
-  --print $ checksumWord . BS.unpack $ CBS.pack "HelloHelloHello" 
-  
-  
+  print "Run Fletcher checksum!"
+  -- This probably doesn't need to be packed and unpacked...
+  print $ checksumWord . BS.unpack $ CBS.pack "HelloHelloHello" 
