@@ -1,5 +1,0 @@
-4 : Denmark
-8 : Sweden
-2 : Moldova
-9 : Liberia
-1 : Democratic Republic of Congo
