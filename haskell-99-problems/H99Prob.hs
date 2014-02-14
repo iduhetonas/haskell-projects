@@ -42,7 +42,7 @@ elementAt list index = list !! index
 -- Problem #4!
 myLength :: [a] -> Int
 myLength [] = 0
-myLength (x:xs) = (myLength xs) + 1
+myLength (_:xs) = (myLength xs) + 1
 
 
 -------------------------------------------------------------------------------
@@ -58,8 +58,14 @@ myReverse list = foldl' (\acc x -> x : acc) [] list
 -------------------------------------------------------------------------------
 
 --Problem #6!
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome list = 
+  let reverseList = myReverse list
+  in list == reverseList
 
+-------------------------------------------------------------------------------
 
+--Problem #7!
 
 
 
