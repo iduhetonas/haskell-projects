@@ -1,3 +1,7 @@
+{- 
+ This is a bunch of Haskell problems, defined here:
+ http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
+-}
 module H99Prob where
 import Data.List (foldl')
 
@@ -49,3 +53,16 @@ myLength (x:xs) = (myLength xs) + 1
 -- http://www.haskell.org/haskellwiki/Foldr_Foldl_Foldl'
 myReverse :: [a] -> [a]
 myReverse list = foldl' (\acc x -> x : acc) [] list
+
+
+-------------------------------------------------------------------------------
+
+--Problem #6!
+
+
+
+
+
+
+
+
