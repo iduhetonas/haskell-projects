@@ -1,4 +1,5 @@
 module H99Prob where
+import Data.List (foldl')
 
 
 -- Problem #1!
@@ -31,3 +32,20 @@ myButLast' (x:xs) = if length xs == 1
 -- TODO: I threw it in anyway, will update later
 elementAt :: [b] -> Int -> b
 elementAt list index = list !! index
+
+-------------------------------------------------------------------------------
+
+-- Problem #4!
+myLength :: [a] -> Int
+myLength [] = 0
+myLength (x:xs) = (myLength xs) + 1
+
+
+-------------------------------------------------------------------------------
+
+
+-- Problem #5!
+-- This time using folds, with a really awesome article: 
+-- http://www.haskell.org/haskellwiki/Foldr_Foldl_Foldl'
+myReverse :: [a] -> [a]
+myReverse list = foldl' (\acc x -> x : acc) [] list
