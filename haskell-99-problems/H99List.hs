@@ -1,8 +1,8 @@
 {- 
- This is a bunch of Haskell problems, defined here:
+ This is a bunch of Haskell list problems, defined here:
  http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
 -}
-module H99Prob where
+module H99List where
 import Data.List (foldl', foldl1')
 
 data NestedList a = Elem a | List [NestedList a]
@@ -109,7 +109,20 @@ compress (x:[]) = x:[]
 
 -- Adapted from http://www.haskell.org/haskellwiki/99_questions/Solutions/9
 pack ::(Eq a) => [a] -> [[a]]
+pack [] = []
 pack (x:xs) = (x : takeWhile (==x) xs) : pack (dropWhile (==x) xs)
+
+
+-------------------------------------------------------------------------------
+
+-- Problem #10!
+--encode :: (Eq a) => [a] -> [(Int, a)]
+--encode list =
+--  let pkList = pack list
+
+
+
+
 
 
 
