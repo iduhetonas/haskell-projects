@@ -34,10 +34,11 @@ myButLast' (x:xs) = if length xs == 1
 -- Problem #3!
 -- Yes, we could easily do "list !! index", but I don't believe
 -- this is in the spirit of the problem
---
--- TODO: I threw it in anyway, will update later
+
 elementAt :: [b] -> Int -> b
-elementAt list index = list !! index
+elementAt (x:xs) index = if index == 0
+                         then x
+                         else elementAt xs (index - 1)
 
 -------------------------------------------------------------------------------
 
@@ -109,3 +110,6 @@ compress (x:[]) = x:[]
 -- Adapted from http://www.haskell.org/haskellwiki/99_questions/Solutions/9
 pack ::(Eq a) => [a] -> [[a]]
 pack (x:xs) = (x : takeWhile (==x) xs) : pack (dropWhile (==x) xs)
+
+
+
