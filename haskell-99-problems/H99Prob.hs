@@ -97,13 +97,15 @@ compress (x:[]) = x:[]
 -- second = [b,b,b,c,c,c]
 --
 -- [[a,a,a,a], second]
+--
 -- So close!
+--pack ::(Eq a) => [a] -> [[a]]
+--pack all@(x:xs) = 
+--  let list = break (x /=) all
+--      first = fst list
+--      second = snd list
+--  in [first, second]
 
-pack :: [Char] -> [[Char]]
---pack (x:[]) = x
-pack all@(x:xs) = 
-  let list = break (x /=) all
-      first = fst list
-      second = snd list
-  in [first, second]
-
+-- Adapted from http://www.haskell.org/haskellwiki/99_questions/Solutions/9
+pack ::(Eq a) => [a] -> [[a]]
+pack (x:xs) = (x : takeWhile (==x) xs) : pack (dropWhile (==x) xs)
