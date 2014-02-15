@@ -90,3 +90,20 @@ compress (x:[]) = x:[]
 -------------------------------------------------------------------------------
 
 -- Problem #9!
+--
+-- [a,a,a,a,b,b,b,c,c,c]
+-- ([a,a,a,a],[b,b,b,c,c,c])
+-- first = [a,a,a,a]
+-- second = [b,b,b,c,c,c]
+--
+-- [[a,a,a,a], second]
+-- So close!
+
+pack :: [Char] -> [[Char]]
+--pack (x:[]) = x
+pack all@(x:xs) = 
+  let list = break (x /=) all
+      first = fst list
+      second = snd list
+  in [first, second]
+
