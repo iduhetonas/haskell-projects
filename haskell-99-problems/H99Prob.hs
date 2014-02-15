@@ -3,7 +3,9 @@
  http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
 -}
 module H99Prob where
-import Data.List (foldl')
+import Data.List (foldl', foldl1')
+
+data NestedList a = Elem a | List [NestedList a]
 
 
 -- Problem #1!
@@ -15,7 +17,7 @@ myLast (x:xs) = if null xs
 -------------------------------------------------------------------------------
 
 -- Problem #2!
--- Efficient implementation to be implemented later
+-- Efficient implementation
 myButLast :: [a] -> a 
 myButLast (x:_:[]) = x
 myButLast (_:xs) = myButLast xs
@@ -57,7 +59,7 @@ myReverse list = foldl' (\acc x -> x : acc) [] list
 
 -------------------------------------------------------------------------------
 
---Problem #6!
+-- Problem #6!
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome list = 
   let reverseList = myReverse list
@@ -65,10 +67,16 @@ isPalindrome list =
 
 -------------------------------------------------------------------------------
 
---Problem #7!
+-- Problem #7!
+
+-- Data definition of NestedList in the problem
+-- Rules:
+
+flatten :: NestedList a -> [a]
+flatten (List a) = foldl' (++) [] $ map flatten a
+flatten (Elem a) = [a]
 
 
+-------------------------------------------------------------------------------
 
-
-
-
+-- Problem #8!
