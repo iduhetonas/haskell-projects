@@ -1,4 +1,4 @@
-module TylerhConcurrency 
+module Concurrency 
   where
 {- Implementation of quicksort from memory.
  -
