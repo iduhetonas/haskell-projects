@@ -14,5 +14,9 @@ module TylerhConcurrency
 --
 -- *) When it works correctly, run each recursive call as a separate thread
 
---quicksort :: (Ord a) => [a] -> [a]
---quicksort list = 
+quicksort :: (Ord a) => [a] -> [a]
+quicksort ([]) = []
+quicksort (x:xs) = quicksort list1 ++ [x] ++ quicksort list2
+  where
+    list1 = filter (<= x) xs
+    list2 = filter (>  x) xs
