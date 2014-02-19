@@ -37,7 +37,10 @@ quicksort (x:xs) = quicksort list1 ++ [x] ++ quicksort list2
 --
 -- The idea here is interesting. This is able to track the "state" of the 
 -- program by setting a case | guard syntactic sugar where the toplevel of the 
--- function calls a sub-function to bubblesort a list. If the bubblesort fails 
+-- function calls a sub-function to bubblesort a list. If the bubblesort list
+-- comparison is false, it will simply run the sub-function again until it's
+-- sorted
+
 bubblesort :: (Ord a) => [a] -> [a]
 bubblesort list = case _bubblesort list of
                        pass | list == pass -> pass
