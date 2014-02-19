@@ -1,10 +1,10 @@
-module Concurrency 
+module Sorting 
   where
-{- Implementation of quicksort from memory.
- -
- - Hoping to extend this into a concurrent program that I 
- - attempted in C a long time ago.
- -}
+-- Implementation of quicksort from memory.
+--
+-- Hoping to extend this into a concurrent program that I 
+-- attempted in C a long time ago.
+--
 
 -- Steps to quicksort:
 -- 1) Take the first element as the "midpoint"
@@ -20,3 +20,13 @@ quicksort (x:xs) = quicksort list1 ++ [x] ++ quicksort list2
   where
     list1 = filter (<= x) xs
     list2 = filter (>  x) xs
+
+
+-- Bubblesort
+--
+-- Currently just works on the first pass
+bubblesort :: (Ord a) => [a] -> [a]
+bubblesort [] = []
+bubblesort (x:y:xs) = if x > y
+                      then y : x : bubblesort xs
+                      else x : y : bubblesort xs
