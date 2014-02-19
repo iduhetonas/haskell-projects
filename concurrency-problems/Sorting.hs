@@ -1,5 +1,6 @@
 module Sorting 
   where
+import Data.List as L
 -- Implementation of quicksort from memory.
 --
 -- Hoping to extend this into a concurrent program that I 
@@ -18,8 +19,15 @@ quicksort :: (Ord a) => [a] -> [a]
 quicksort ([]) = []
 quicksort (x:xs) = quicksort list1 ++ [x] ++ quicksort list2
   where
-    list1 = filter (<= x) xs
-    list2 = filter (>  x) xs
+    (list1, list2) = L.partition (<=x) xs
+
+-- Threaded quicksort
+--tQuicksort :: (Ord a) => [a] -> [a]
+--tQuicksort ([]) = []
+--tQuicksort (x:xs) = tQuicksort list1 ++ [x] ++ tQuicksort list2
+--  where
+--    list1 = filter (<= x) xs --Threading should happen at these two lines
+--    list2 = filter (>  x) xs
 
 
 -- Bubblesort
