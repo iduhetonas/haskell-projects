@@ -24,9 +24,17 @@ quicksort (x:xs) = quicksort list1 ++ [x] ++ quicksort list2
 
 -- Bubblesort
 --
--- Currently just works on the first pass
+-- Adapted from:
+-- http://rosettacode.org/wiki/Sorting_algorithms/Bubble_sort#Haskell
+--
+-- The idea here is interesting. This is able to track the "state" of the 
+-- program by setting a case | guard syntactic sugar where the toplevel of the 
+-- function calls a sub-function to bubblesort a list. If the bubblesort fails 
 bubblesort :: (Ord a) => [a] -> [a]
-bubblesort [] = []
-bubblesort (x:y:xs) = if x > y
-                      then y : x : bubblesort xs
-                      else x : y : bubblesort xs
+bubblesort list = case _bubblesort list of
+                       pass | list == pass -> pass
+                            | otherwise    -> bubblesort pass
+  where _bubblesort (x:y:xs) = if x > y
+                               then y : (_bubblesort (x : xs))
+                               else x : (_bubblesort (y : xs))
+        _bubblesort list = list
