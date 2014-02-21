@@ -49,3 +49,16 @@ bubblesort list = case _bubblesort list of
                                then y : (_bubblesort (x : xs))
                                else x : (_bubblesort (y : xs))
         _bubblesort list = list
+
+-- Insertionsort
+--
+-- Partially applied function
+--
+-- This is actually the same solution found on:
+-- http://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort
+insertionsort :: (Ord a) => [a] -> [a]
+insertionsort = foldr insert []
+
+-- Mergesort
+--
+--
