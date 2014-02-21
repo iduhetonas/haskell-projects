@@ -53,6 +53,9 @@ bubblesort list = case _bubblesort list of
 -- Insertionsort
 --
 -- Partially applied function
+--
+-- This is actually the same solution found on:
+-- http://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort
 insertionsort :: (Ord a) => [a] -> [a]
 insertionsort = foldr insert []
 
