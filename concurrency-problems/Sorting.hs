@@ -56,6 +56,8 @@ bubblesort list = case _bubblesort list of
 --
 -- This is actually the same solution found on:
 -- http://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort
+--
+-- Shows how incredibly easy it is to do an Insertion sort in Haskell!
 insertionsort :: (Ord a) => [a] -> [a]
 insertionsort = foldr insert []
 
