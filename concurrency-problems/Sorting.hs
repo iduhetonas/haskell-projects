@@ -45,9 +45,9 @@ bubblesort :: (Ord a) => [a] -> [a]
 bubblesort list = case _bubblesort list of
                        pass | list == pass -> pass
                             | otherwise    -> bubblesort pass
-  where _bubblesort (x:y:xs) = if x > y
-                               then y : (_bubblesort (x : xs))
-                               else x : (_bubblesort (y : xs))
+
+  where _bubblesort (x:y:xs) | x > y = y : (_bubblesort (x : xs))
+                             | otherwise = x : (_bubblesort (y : xs))
         _bubblesort list = list
 
 -- Insertionsort
