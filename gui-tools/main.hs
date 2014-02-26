@@ -24,7 +24,7 @@ main = do
 
     button1 <- builderGetObject builder castToButton "button1"
     on button1 buttonActivated $ do
-      putStrLn "How goes it, Master Sam?!"
+      putStrLn "Hello World!"
 
     button2 <- builderGetObject builder castToButton "button2"
     on button2 buttonActivated $ do
