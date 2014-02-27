@@ -1,4 +1,4 @@
-module Sorting 
+module ConcurrencyProblems.Sorting 
   where
 import Data.List as L
 -- Implementation of quicksort from memory.

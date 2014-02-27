@@ -1,4 +1,6 @@
 module Main where
-import UnitTesting.QuickCheck
+import UnitTesting.UnitTests
+import Test.QuickCheck
 
-main = print 2
+main :: IO ()
+main = quickCheck (prop_idempotent :: [Integer] -> Bool)
