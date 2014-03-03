@@ -16,13 +16,20 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
+Flag guiPackages
+  Description: Used for the gtk3 projects
+  Default:     False
+
 executable haskell-projects
   -- main-is:             
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.6 && <4.7
+  Build-depends:       base >=4.6 && <4.7
                     ,  QuickCheck
-                    ,  gtk3
                     ,  hspec
+  If flag(guiPackages)
+    Build-depends:
+      gtk3
+
   -- hs-source-dirs:      
   default-language:    Haskell2010
