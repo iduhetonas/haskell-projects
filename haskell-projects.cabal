@@ -22,7 +22,6 @@ executable haskell-projects
   -- other-extensions:    
   build-depends:       base >=4.6 && <4.7
                     ,  QuickCheck
-                    ,  gtk2hs-buildtools
                     ,  gtk3
                     ,  hspec
   -- hs-source-dirs:      
