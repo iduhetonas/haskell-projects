@@ -160,7 +160,7 @@ decodeModified = concat . map (dMod)
 -------------------------------------------------------------------------------
 
 -- Problem #14!
-dupli :: (Eq a) => a -> a
+dupli :: (Eq a) => [a] -> [a]
 dupli (x:xs) = x : x : dupli xs
 dupli _ = []
 
@@ -169,7 +169,7 @@ dupli _ = []
 
 -- Problem #15!
 -- Easy way to solve
-repli :: (Eq a) => a -> Int -> a
+repli :: (Eq a) => [a] -> Int -> [a]
 repli (x:xs) idx = replicate idx x ++ repli xs idx
 repli _ _ = []
 
@@ -182,5 +182,11 @@ repli _ _ = []
 -------------------------------------------------------------------------------
 
 -- Problem #16!
-dropEvery :: (Eq a) => a -> Int -> a
-dropEvery list idx =
+-- TODO: Doesn't work when length list == idx
+dropEvery :: (Eq a) => [a] -> Int -> [a]
+dropEvery list 0   = list
+dropEvery _    1   = []
+dropEvery list idx = 
+  case splitAt idx list of
+    (first, []) -> first
+    (first, rest) -> init first ++ dropEvery rest idx
