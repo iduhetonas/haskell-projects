@@ -143,4 +143,11 @@ encodeModified list =
           _toTuple (x:[]) = Single x
           _toTuple rest@(x:_) = Multiple (length rest) x
 
+-------------------------------------------------------------------------------
+
+-- Problem #12!
+decodeModified :: [Encode a Char] -> String
+decodeModified = concat . map (dMod) 
+  where dMod (Multiple x y) = replicate x y
+        dMod (Single x) = [x]
 
