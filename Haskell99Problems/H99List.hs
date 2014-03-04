@@ -121,7 +121,7 @@ encode list =
   in toTuple pkList 
 
     where toTuple (x:xs) = _toTuple x : toTuple xs
-          toTuple [] = []
+          toTuple _ = []
           _toTuple (x:[]) = (1, x)
           _toTuple rest@(x:_) = (length rest, x)
 
@@ -151,3 +151,29 @@ decodeModified = concat . map (dMod)
   where dMod (Multiple x y) = replicate x y
         dMod (Single x) = [x]
 
+-------------------------------------------------------------------------------
+
+-- Problem #13!
+-- Didn't I already do this?
+
+
+-------------------------------------------------------------------------------
+
+-- Problem #14!
+dupli :: String -> String
+dupli (x:xs) = x : x : dupli xs
+dupli _ = []
+
+
+-------------------------------------------------------------------------------
+
+-- Problem #15!
+-- Easy way to solve
+repli :: String -> Int -> String
+repli (x:xs) idx = replicate idx x ++ repli xs idx
+repli _ _ = []
+
+-- Direct way to solve
+--repli :: String -> Int -> String
+--repli (x:xs) index =
+--  case rep x
