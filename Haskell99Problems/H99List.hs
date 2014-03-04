@@ -3,16 +3,15 @@
  http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
 -}
 module H99List where
-import Data.List (foldl', foldl1')
+import Data.List (foldl')
 
 data NestedList a = Elem a | List [NestedList a]
 
 
 -- Problem #1!
 myLast :: [a] -> a
-myLast (x:xs) = if null xs
-                then x
-                else myLast xs
+myLast (x:xs) | null xs = x 
+              | otherwise = myLast xs
 
 -------------------------------------------------------------------------------
 
@@ -36,9 +35,8 @@ myButLast' (x:xs) = if length xs == 1
 -- this is in the spirit of the problem
 
 elementAt :: [b] -> Int -> b
-elementAt (x:xs) index = if index == 0
-                         then x
-                         else elementAt xs (index - 1)
+elementAt (x:xs) index | index == 0 = x
+                       | otherwise = elementAt xs (index - 1)
 
 -------------------------------------------------------------------------------
 
@@ -83,10 +81,9 @@ flatten (Elem a) = [a]
 -- Problem #8!
 
 compress :: (Eq a) => [a] -> [a]
-compress all@(x:y:xs) = if x == y
-                        then compress (y:xs)
-                        else x:compress (xs)
-compress (x:[]) = x:[]
+compress (x:y:xs) | x == y = compress (y:xs)
+                  | otherwise = x : compress (xs)
+compress (x:[]) = x : []
 
 -------------------------------------------------------------------------------
 
@@ -121,8 +118,6 @@ pack (x:xs) = (x : takeWhile (==x) xs) : pack (dropWhile (==x) xs)
 --  let pkList = pack list
 
 
+-------------------------------------------------------------------------------
 
-
-
-
-
+-- Problem #11!
