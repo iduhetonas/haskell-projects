@@ -113,11 +113,34 @@ pack (x:xs) = (x : takeWhile (==x) xs) : pack (dropWhile (==x) xs)
 -------------------------------------------------------------------------------
 
 -- Problem #10!
---encode :: (Eq a) => [a] -> [(Int, a)]
---encode list =
---  let pkList = pack list
+-- Due to the nature of map functions, I guarantee there's a 
+-- cooler way to do this
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode list =
+  let pkList = pack list
+  in toTuple pkList 
+
+    where toTuple (x:xs) = _toTuple x : toTuple xs
+          toTuple [] = []
+          _toTuple (x:[]) = (1, x)
+          _toTuple rest@(x:_) = (length rest, x)
 
 
 -------------------------------------------------------------------------------
 
+data Encode a b = Multiple Int b 
+                | Single b 
+                deriving (Eq, Show)
+
 -- Problem #11!
+encodeModified :: (Eq a) => [a] -> [Encode b a]
+encodeModified list = 
+  let pkList = pack list
+  in toTuple pkList
+  
+    where toTuple (x:xs) = _toTuple x : toTuple xs
+          toTuple [] = []
+          _toTuple (x:[]) = Single x
+          _toTuple rest@(x:_) = Multiple (length rest) x
+
+
