@@ -5,7 +5,6 @@
 module H99List where
 import Data.List (foldl')
 
-data NestedList a = Elem a | List [NestedList a]
 
 
 -- Problem #1!
@@ -69,7 +68,7 @@ isPalindrome list =
 -- Problem #7!
 
 -- Data definition of NestedList in the problem
--- Rules:
+data NestedList a = Elem a | List [NestedList a]
 
 flatten :: NestedList a -> [a]
 flatten (List a) = foldl' (++) [] $ map flatten a
@@ -242,3 +241,14 @@ removeAt idx list =
       dropLetter 1   (_:xs) = dropLetter (0) xs
       dropLetter ix  (x:xs) = x : dropLetter (ix - 1) xs
       dropLetter _   []     = []
+
+-------------------------------------------------------------------------------
+
+-- Problem #21!
+insertAt :: a -> [a] -> Int -> [a]
+insertAt elmnt  []    idx | idx == 1  = elmnt : []
+                          | otherwise = []
+insertAt elmnt (x:xs) idx | idx == 1  = elmnt : x  : insertAt elmnt xs (idx - 1)
+                          | otherwise = x     :      insertAt elmnt xs (idx - 1) 
+
+-------------------------------------------------------------------------------
