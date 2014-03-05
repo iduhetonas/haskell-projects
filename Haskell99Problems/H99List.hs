@@ -252,3 +252,15 @@ insertAt elmnt (x:xs) idx | idx == 1  = elmnt : x  : insertAt elmnt xs (idx - 1)
                           | otherwise = x     :      insertAt elmnt xs (idx - 1) 
 
 -------------------------------------------------------------------------------
+
+-- Problem #22!
+range :: Int -> Int -> [Int]
+range low high = take high [low..]
+
+-------------------------------------------------------------------------------
+
+-- Problem #23!
+--rnd-select :: [a] -> Int -> IO [a]
+--rnd-select list idx = do
+  
+
