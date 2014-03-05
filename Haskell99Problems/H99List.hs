@@ -214,6 +214,31 @@ split list idx =
 
 -- Problem #18!
 slice :: [a] -> Int -> Int -> [a]
-slice _      0   0    = []
-slice (x:xs) 0   high = x : slice xs 0 (high - 1)
-slice (_:xs) low high = slice xs (low - 1) high
+slice _      1   0    = []
+slice (x:xs) 1   high = x : slice xs 1 (high - 1)
+slice (_:xs) low high = slice xs (low - 1) (high - 1)
+
+
+-------------------------------------------------------------------------------
+
+-- Problem #19!
+-- Despite being two-star, this was incredibly straight-forward. Still
+-- inefficient though, as the list is sequenced twice
+rotate :: [a] -> Int -> [a]
+rotate list idx = 
+  let l0 = take idx list
+      l1 = drop idx list
+  in l1 ++ l0
+
+-------------------------------------------------------------------------------
+
+-- Problem #20!
+removeAt :: Int -> [b] -> (b, [b])
+removeAt idx list = 
+  let p0 = list !! (idx - 1)
+      l1 = dropLetter idx list
+  in (p0, l1)
+    where 
+      dropLetter 1   (_:xs) = dropLetter (0) xs
+      dropLetter ix  (x:xs) = x : dropLetter (ix - 1) xs
+      dropLetter _   []     = []
