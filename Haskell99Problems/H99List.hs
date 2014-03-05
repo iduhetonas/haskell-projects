@@ -182,11 +182,38 @@ repli _ _ = []
 -------------------------------------------------------------------------------
 
 -- Problem #16!
--- TODO: Doesn't work when length list == idx
+-- Bit of an awkward solution
 dropEvery :: (Eq a) => [a] -> Int -> [a]
 dropEvery list 0   = list
 dropEvery _    1   = []
 dropEvery list idx = 
-  case splitAt idx list of
+  case splitAt (idx - 1) list of
     (first, []) -> first
-    (first, rest) -> init first ++ dropEvery rest idx
+    (first, rest) -> first ++ dropEvery (tail rest) idx
+
+
+-------------------------------------------------------------------------------
+
+-- Problem #17!
+-- Inefficient, since it walks through the list twice
+split :: [a] -> Int -> ([a], [a])
+split list idx = 
+  let l1 = splitLeft  list idx 
+      l2 = splitRight list idx
+      in (l1, l2)
+    where
+      splitLeft  (x:xs) ix  | ix /= 0   = x : splitLeft xs (ix - 1)
+                            | otherwise = [] 
+      splitLeft    _    _   = []
+      splitRight (x:xs) ix  | ix /= 0   = splitRight xs (ix - 1)
+                            | otherwise = x : splitRight xs 0
+      splitRight   _    _   = []
+
+
+-------------------------------------------------------------------------------
+
+-- Problem #18!
+slice :: [a] -> Int -> Int -> [a]
+slice _      0   0    = []
+slice (x:xs) 0   high = x : slice xs 0 (high - 1)
+slice (_:xs) low high = slice xs (low - 1) high
