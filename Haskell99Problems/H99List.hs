@@ -4,6 +4,7 @@
 -}
 module H99List where
 import Data.List (foldl')
+import System.Random
 
 
 
@@ -260,7 +261,14 @@ range low high = take high [low..]
 -------------------------------------------------------------------------------
 
 -- Problem #23!
---rnd-select :: [a] -> Int -> IO [a]
---rnd-select list idx = do
-  
+rnd_select :: [a] -> Int -> IO [a]
+rnd_select list idx = do
+  globRand <- newStdGen
+  let upper        = (length list) - 1
+      randomInf    = randomRs (0, upper) globRand
+      randomSelect = take idx randomInf
+  return $ toRand randomSelect
+    where
+      toRand []      = []
+      toRand (x:xs)  = (list !! x) : toRand xs
 

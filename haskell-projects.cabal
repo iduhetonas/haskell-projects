@@ -20,6 +20,9 @@ Flag guiPackages
   Description: Used for the gtk3 projects
   Default:     False
 
+Flag h99Examples
+  Description: Example programs to solve Haskell 99 problems
+
 executable haskell-projects
   -- main-is:             
   -- other-modules:       
@@ -30,6 +33,10 @@ executable haskell-projects
   If flag(guiPackages)
     Build-depends:
       gtk3
+
+  If flag(h99Examples)
+    Build-depends:
+      random
 
   -- hs-source-dirs:      
   default-language:    Haskell2010
