@@ -272,3 +272,8 @@ rnd_select list idx = do
       toRand []      = []
       toRand (x:xs)  = (list !! x) : toRand xs
 
+-------------------------------------------------------------------------------
+
+-- Problem #24!
+--diff_select :: Int -> Int -> [Int]
+--diff_select num size = 
