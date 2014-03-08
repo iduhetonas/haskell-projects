@@ -13,13 +13,24 @@ isPrime var =
   in  if null filtList
       then False
       else True
-
-isModZero :: Int -> Int -> Bool
-isModZero x y = if   mod x y == 0
-                then True
-                else False
+  where
+  isModZero x y | mod x y == 0 = True
+                | otherwise = False
 
 --------------------------------------------------------------------------------
 
 
 -- Problem #32!
+myGCD :: (Integral a) => a -> a -> a
+myGCD first second = 
+  case rem first second of
+       result | result == 0 -> second
+              | otherwise   -> myGCD second result
+
+--------------------------------------------------------------------------------
+
+
+-- Problem #33!
+-- Need to figure out how to make this point-free
+coprime :: (Integral a) => a -> a -> Bool
+coprime first second = (==1) $ myGCD first second
