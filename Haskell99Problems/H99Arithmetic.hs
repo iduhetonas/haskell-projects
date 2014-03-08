@@ -34,3 +34,12 @@ myGCD first second =
 -- Need to figure out how to make this point-free
 coprime :: (Integral a) => a -> a -> Bool
 coprime first second = (==1) $ myGCD first second
+
+
+--------------------------------------------------------------------------------
+
+-- Problem #34!
+totient :: Int -> Int
+totient num = 
+  let totFunc = coprime num
+  in length . filter (/=False) $ map totFunc [1..(num-1)]
