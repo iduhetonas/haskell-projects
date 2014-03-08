@@ -4,6 +4,9 @@
 -}
 module H99Arithmetic where
 
+import Data.List
+import Data.Ord
+
 -- Problem #31!
 isPrime :: Int -> Bool
 isPrime 2 = True
@@ -43,3 +46,37 @@ totient :: Int -> Int
 totient num = 
   let totFunc = coprime num
   in length . filter (/=False) $ map totFunc [1..(num-1)]
+
+
+--------------------------------------------------------------------------------
+
+-- Problem #35!
+-- Very surprised that this worked on the first try.
+-- Though using an input of 1 yields an infinite loop
+primeFactors :: Int -> [Int]
+primeFactors num = 
+  case findFact num [2..] of
+    result | result == num -> result : []
+           | otherwise ->  result : primeFactors (div num result)
+  where
+    findFact nm (x:xs) | nm == 1 || nm == -1 = nm  
+                       | rem nm x == 0 = x        
+                       | nm == x = x
+                       | otherwise = findFact nm xs
+
+--------------------------------------------------------------------------------
+
+
+-- Bonus problem
+-- This takes in a list of numbers (i.e. [1.100]) and returns the most prime
+-- factors inside the list.
+-- TODO: This could be way more efficient, especially in primeFactors
+mostPrimeFactors :: [Int] -> [Int]
+mostPrimeFactors list = maximumBy (comparing length) $ map primeFactors list
+
+
+
+--------------------------------------------------------------------------------
+
+
+
