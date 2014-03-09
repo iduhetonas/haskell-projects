@@ -119,11 +119,10 @@ encode :: (Eq a) => [a] -> [(Int, a)]
 encode list =
   let pkList = pack list
   in toTuple pkList 
-
-    where toTuple (x:xs) = _toTuple x : toTuple xs
-          toTuple _ = []
-          _toTuple (x:[]) = (1, x)
-          _toTuple rest@(x:_) = (length rest, x)
+  where toTuple (x:xs) = _toTuple x : toTuple xs
+        toTuple _ = []
+        _toTuple (x:[]) = (1, x)
+        _toTuple rest@(x:_) = (length rest, x)
 
 
 -------------------------------------------------------------------------------

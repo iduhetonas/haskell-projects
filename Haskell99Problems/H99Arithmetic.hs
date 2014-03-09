@@ -6,6 +6,7 @@ module H99Arithmetic where
 
 import Data.List
 import Data.Ord
+import H99List(encode)
 
 -- Problem #31!
 isPrime :: Int -> Bool
@@ -74,9 +75,21 @@ primeFactors num =
 mostPrimeFactors :: [Int] -> [Int]
 mostPrimeFactors list = maximumBy (comparing length) $ map primeFactors list
 
+--------------------------------------------------------------------------------
+
+
+-- Problem #36!
+-- This solves (a, b) as (b, a) instead
+prime_factors_mult :: Int -> [(Int, Int)]
+prime_factors_mult = encode . primeFactors
 
 
 --------------------------------------------------------------------------------
 
-
-
+-- Problem #37!
+--totient' :: Int -> Int
+--totient' num = 
+--  let list = prime_factors_mult num
+--  in calc list
+--  where
+--    calc (x:xs) = ((snd x) - 1) * (snd x) ** ((fst x) - 1) * calc xs
