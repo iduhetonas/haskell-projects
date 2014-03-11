@@ -277,3 +277,17 @@ rnd_select list idx = do
 --diff_select :: Int -> Int -> [Int]
 --diff_select num size = do
 --  gen <- newStdGen
+
+
+
+-------------------------------------------------------------------------------
+--
+-- Problem #25!
+--
+-------------------------------------------------------------------------------
+
+-- Problem #26!
+combination :: Int -> String -> [String]
+combination num list = do
+  x <- list
+  return [x]
