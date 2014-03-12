@@ -22,6 +22,11 @@ Flag guiPackages
 
 Flag h99Examples
   Description: Example programs to solve Haskell 99 problems
+  Default:     True
+
+Flag extraHelloWorld
+  Description: Bonus packages for Hello World programs
+  Default:     True
 
 executable haskell-projects
   -- main-is:             
@@ -37,6 +42,10 @@ executable haskell-projects
   If flag(h99Examples)
     Build-depends:
       random
+
+  If flag(extraHelloWorld)
+    Build-depends:
+      mtl
 
   -- hs-source-dirs:      
   default-language:    Haskell2010

@@ -277,10 +277,10 @@ rnd_select list idx = do
 diff_select :: Int -> Int -> [Int]
 diff_select num size = do
   x <- [1..size] 
-  guarded (randomIO :: IO Bool) $ return x
-  where
-    guarded :: IO Bool -> Bool
-    guarded xs = return xs
+  boolResult <- (randomIO :: IO Bool)
+  if boolResult == True
+  then return x
+  else []
 
 
 
