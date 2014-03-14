@@ -274,14 +274,9 @@ rnd_select list idx = do
 -------------------------------------------------------------------------------
 --
 -- Problem #24!
-diff_select :: Int -> Int -> [Int]
-diff_select num size = do
-  x <- [1..size] 
-  boolResult <- (randomIO :: IO Bool)
-  if boolResult == True
-  then return x
-  else []
-
+-- Does not select distinct elements
+diff_select :: Int -> Int -> IO [Int]
+diff_select num size = rnd_select [1..size] num
 
 
 -------------------------------------------------------------------------------
@@ -291,7 +286,7 @@ diff_select num size = do
 -------------------------------------------------------------------------------
 
 -- Problem #26!
-combination :: Int -> String -> [String]
-combination num list = do
-  x <- list
-  return [x]
+--combination :: Int -> String -> [String]
+--combination num list = do
+--  x <- list
+--  return [x]
