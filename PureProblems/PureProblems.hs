@@ -6,7 +6,7 @@ module PureProblems
 -- Program to remove an element value from a list
 --
 remove :: (Eq a) => a -> [a] -> [a]
-remove acc [] = []
+remove _   [] = []
 remove acc (x:xs) = if x == acc
                     then remove acc xs
                     else x : (remove acc xs)
@@ -39,19 +39,13 @@ powerTwo num = if (num `mod` 2) /= 0
 
 -- Swapping letters to numbers
 
---class LetterDigit a where
---  digit ::  a -> Int
---  letter :: a -> Char
---
----- Is there a better way to do this?
---instance LetterDigit Int where
---  letter 1 = 'a'
---  letter 2 = 'b'
---  letter 3 = 'c'
---  -- Ugh
---
---instance LetterDigit Char where
---  digit
-
---letterToNum :: String -> [Int]
---letterToNum (x:xs) = 
+-- Utilizes non-determinism in lists
+-- Ends up being O(26n) == O(n)
+-- Treating !(a-z,A-Z) as 27
+letterToNum :: String -> [Int]
+letterToNum list = do
+  x <- list
+  return $ getNum 1 x (['a'..'z']++['A'..'Z'])
+    where getNum _   _    []     = 27
+          getNum idx char (x:xs) | char == x = idx
+                                 | otherwise = getNum (idx + 1) char xs
