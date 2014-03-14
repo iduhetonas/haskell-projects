@@ -2,11 +2,11 @@
  This is a bunch of Haskell list problems, defined here:
  http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
 -}
-module H99Arithmetic where
+module Arithmetic where
 
 import Data.List
 import Data.Ord
-import H99List(encode)
+import List(encode)
 
 -- Problem #31!
 isPrime :: Int -> Bool

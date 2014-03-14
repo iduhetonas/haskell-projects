@@ -2,7 +2,7 @@
  This is a bunch of Haskell list problems, defined here:
  http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
 -}
-module H99List where
+module List where
 import Data.List (foldl')
 import System.Random
 
