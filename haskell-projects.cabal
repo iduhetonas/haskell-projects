@@ -35,6 +35,7 @@ executable haskell-projects
   Build-depends:       base >=4.6 && <4.7
                     ,  QuickCheck
                     ,  hspec
+                    ,  parsec
   If flag(guiPackages)
     Build-depends:
       gtk3
