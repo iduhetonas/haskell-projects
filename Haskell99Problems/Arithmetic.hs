@@ -105,3 +105,14 @@ prime_factors_mult = encode . primeFactors
 -- This is actually my first list comprehension
 primesR :: Int -> Int -> [Int]
 primesR low high = [primes | primes <- [low..high], not $ isPrime primes]
+
+
+--------------------------------------------------------------------------------
+
+-- Problem #40!
+--goldbach :: Int -> (Int, Int)
+--goldbach num = do
+--  let primes = primesR 1 (num-1)
+--  x <- primes
+--  return (x,x)
+
