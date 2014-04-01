@@ -93,3 +93,15 @@ prime_factors_mult = encode . primeFactors
 --  in calc list
 --  where
 --    calc (x:xs) = ((snd x) - 1) * (snd x) ** ((fst x) - 1) * calc xs
+
+--------------------------------------------------------------------------------
+
+-- Problem #38!
+--
+
+--------------------------------------------------------------------------------
+
+-- Problem #39!
+-- This is actually my first list comprehension
+primesR :: Int -> Int -> [Int]
+primesR low high = [primes | primes <- [low..high], not $ isPrime primes]
