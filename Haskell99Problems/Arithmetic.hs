@@ -116,3 +116,9 @@ primesR low high = [primes | primes <- [low..high], not $ isPrime primes]
 --  x <- primes
 --  return (x,x)
 
+
+--------------------------------------------------------------------------------
+
+
+-- Problem #41!
+--goldbachList :: Int -> Int -> [Int]
